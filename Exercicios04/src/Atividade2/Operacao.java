@@ -4,47 +4,45 @@ import javax.swing.JOptionPane;
 
 public class Operacao {
 	//armazena dados
-	public void armazenaP() {
-		String[] ap = new String[10];  
+	public String[] armazenaP(String[] dados) {
 		
-		JOptionPane.showMessageDialog(null, "Teste");
+		for (int i = 0; i < 10; i++) {
+			
+			dados[i] = JOptionPane.showInputDialog(null, "Informe seu nome");
+			
+		}
 		
-		
-		removeP(ap);
+		return dados;
+	
 	}
 	
 	//remove a pessoa
-	public void removeP(String[] ap) {
-		
-		
-		
-		
+	public String[] removeP(String[] dado, int r) {
+				
+			dado[r] = null;
+
+		return dado;
 	}
 	//busca a posição
-	public void buscP(String[] ap) {
-		int buscp = 0;
+	public String[] buscP(String[] dado, int r) {
 		
 		
+		JOptionPane.showMessageDialog(null, dado[r]);
 		
 		
-		
+		return dado;
 	}
 	
 	//imprime tudo
-	public void imprAg(String[] ap) {
+	public String[] imprAg(String[] dado) {
 		
+		for(int i = 0; i < 10; i++) {
 		
+			System.out.println(dado[i]);
+			
+		}
 		
-		
-	}
-	
-	//imprime os dados de uma pessoa na posição "i"
-	public void imprimeP(int index) {
-		
-		
-		
-		
-		
+		return dado;
 	}
 
 }
