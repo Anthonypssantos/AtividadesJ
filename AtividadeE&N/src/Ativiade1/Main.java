@@ -10,7 +10,7 @@ public class Main {
 		Operacao op = new Operacao();
 		String[] dado = new String[4];
 		
-		int casos=0, env=0, at=0;
+		int casos=0, dia=0, mes=0, env=0, at=0, d=0, m=0;
 		boolean c1 = true;
 		
 		do {
@@ -22,11 +22,11 @@ public class Main {
 			case 1:{
 					
 				dado[0] = JOptionPane.showInputDialog("Coloque seu nome");
-				dado[1] = JOptionPane.showInputDialog("Coloque o dia atual");
-				dado[2] = JOptionPane.showInputDialog("Coloque o mês atual");
+				dia = Integer.parseInt(JOptionPane.showInputDialog("Coloque o dia de nascimento"));
+				mes = Integer.parseInt(JOptionPane.showInputDialog("Coloque o mes de nascimento"));
 				at = Integer.parseInt(JOptionPane.showInputDialog("Coloque o ano de nascimento"));
 				
-				op.dados(dado, at, env);
+				op.dados(dado, at, env, dia, mes, d, m);
 					
 			}
 			
