@@ -8,7 +8,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		Pagamentos pag = new Pagamentos();
-	
+		
 		String casos;
 			
 		boolean c = true;
@@ -41,7 +41,7 @@ public class Main {
 			}
 			
 			case "sacola":{
-				
+					
 				JOptionPane.showMessageDialog(null, "Sua sacola\n"+"Batata: "+pag.rb+"\nArroz: "+pag.ra+"\nFeijão: "+pag.rfj+"\nFrango: "+pag.rfg+"\nMate: "+pag.rm+"\nValor Total: "+pag.rt);
 				
 				break;
