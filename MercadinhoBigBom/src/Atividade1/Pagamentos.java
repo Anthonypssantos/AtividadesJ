@@ -111,7 +111,7 @@ public class Pagamentos extends Produtos{
 				
 				if(p == 0) {
 					
-					JOptionPane.showMessageDialog(null, "Você será preso por furto");
+					JOptionPane.showMessageDialog(null, "Você será preso por furto pague agora");
 					
 					
 				}else {
@@ -267,7 +267,7 @@ public class Pagamentos extends Produtos{
 				
 				if(p == 0) {
 					
-					JOptionPane.showMessageDialog(null, "Você será preso por tentativa de furto");
+					JOptionPane.showMessageDialog(null, "Você será preso por tentativa de furto pague agora");
 						
 					
 				}else {
@@ -423,9 +423,8 @@ public class Pagamentos extends Produtos{
 				
 				if(p == 0) {
 					
-					JOptionPane.showMessageDialog(null, "Você será preso por tentativa de furto");
+					JOptionPane.showMessageDialog(null, "Você será preso por tentativa de furto pague agora");
 						
-					
 				}else {
 					
 					c = false;
