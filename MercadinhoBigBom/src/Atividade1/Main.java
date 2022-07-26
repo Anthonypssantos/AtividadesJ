@@ -9,12 +9,12 @@ public class Main {
 		
 		Pagamentos pag = new Pagamentos();
 		
-		String casos;
+		String casos="";
 			
 		boolean c = true;
 		
 		do {
-			
+			casos="";
 			casos = JOptionPane.showInputDialog("Metodos de pagamento a baixo\n============\nDinheiro\nCheque\nCartão\nDigite 'sacola' para ver a sua sacola\nDigite 'Sair' para sair\n============\nPara iniciar a compra siga o exemplo a baixo\nExemplo: Dinheiro para pagar em dinheiro e etc...");
 			
 			switch(casos) {
@@ -47,10 +47,9 @@ public class Main {
 				break;
 			}
 			
-			case "Sair":{
-				
-				c = false;
-				
+			default:{
+				JOptionPane.showMessageDialog(null, "Obrigado pela compra!");
+				c=false;
 				break;
 			}
 					

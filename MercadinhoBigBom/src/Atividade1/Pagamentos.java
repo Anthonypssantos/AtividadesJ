@@ -3,7 +3,6 @@ package Atividade1;
 import javax.swing.JOptionPane;
 
 public class Pagamentos extends Produtos{
-		
 	Produtos pdt = new Produtos();
 	
 	 Double batata = 8.15, arroz = 5.10, feijao = 4.75, frango = 10.50, mate = 8.0;
@@ -14,11 +13,15 @@ public class Pagamentos extends Produtos{
 	  
 	//dinheiro 
 	public void dinheiro() {
-
+		
+		c = true;
 		JOptionPane.showMessageDialog(null, "Você ira pagar em dinheiro\nLembrete: A compra é feita em kilo por alimento");
-			
+		produtos = JOptionPane.showInputDialog("Tipo\n=========\nbatata\narroz\nfeijão\nfrango\nmate\n==========\nDigite 'parar' para voltar\nDigite 'pagar' para pagar os alimentos\n============\nSacola atual\nbatata: "+rb+ "\narroz: "+ra+"\nfeijão: "+rfj+"\nfrango: "+rfg+"\nmate: "+rm+"\n===========\nCustos\nBatata: "+sb+"\nArroz: "+sa+"\nFeijão: "+sfj+"\nFrango: "+sfg+"\nMate: "+sm+"\nValor total: "+ rt);
+		
 		//faça
-		do {
+		while(c == true) {
+			
+			produtos="";
 			rt = sb + sa + sfj + sfg + sm;
 			produtos = JOptionPane.showInputDialog("Tipo\n=========\nbatata\narroz\nfeijão\nfrango\nmate\n==========\nDigite 'parar' para voltar\nDigite 'pagar' para pagar os alimentos\n============\nSacola atual\nbatata: "+rb+ "\narroz: "+ra+"\nfeijão: "+rfj+"\nfrango: "+rfg+"\nmate: "+rm+"\n===========\nCustos\nBatata: "+sb+"\nArroz: "+sa+"\nFeijão: "+sfj+"\nFrango: "+sfg+"\nMate: "+sm+"\nValor total: "+ rt);                                                        
 			
@@ -26,17 +29,15 @@ public class Pagamentos extends Produtos{
 			
 			case "batata":{
 				
-				if(rb > 49) {
+				if(rb < 99) {
 					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
+					rb++;		
+					sb += batata;					
+					pdt.setBatata(rb);
 					
 				}else {
 					
-					rb++;	
-					
-					sb += batata;
-					
-					pdt.setBatata(rb);
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
 					
 				}		
 				
@@ -45,31 +46,36 @@ public class Pagamentos extends Produtos{
 			
 			case "arroz":{
 				
-				if(ra > 49) {
+				if(ra < 99) {
 					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-					
-				}else {
-				
 					ra++;
 					sa += arroz;
-					pdt.setArroz(ra);	
+					pdt.setArroz(ra);
+					
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
+						
 				}
 				
-				break;			
+				break;		
+				
 				}
 			
 			case "feijão":{
 				
-				if(rfj > 49) {
-					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-							
-				}else {
+				if(rfj < 99) {
 					
 					rfj++;	
 					sfj += feijao;
 					pdt.setFeijao(rfj);
+					
+					
+							
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
+					
 				}
 				
 				break;
@@ -77,15 +83,17 @@ public class Pagamentos extends Produtos{
 			
 			case "frango":{
 				
-				if(rfg > 49) {
-					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-					
-				}else {
+				if(rfg < 99) {
 					
 					rfg++;
 					sfg += frango;
 					pdt.setFrango(rfg);
+					
+					
+					
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
 				}
 				
 				break;
@@ -93,36 +101,21 @@ public class Pagamentos extends Produtos{
 			
 			case "mate":{
 				
-				if(rm > 49) {
-					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-					
-				}else {
+				if(rm < 99) {
 					
 					rm++;
 					sm += mate;
 					pdt.setMate(rm);
-				}
-				
-				break;
-				}
-			
-			case "parar":{
-				
-				if(p == 0) {
-					
-					JOptionPane.showMessageDialog(null, "Você será preso por furto pague agora");
-					
 					
 				}else {
 					
-					c = false;
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
 					
 				}
 				
 				break;
 				}
-			
+					
 			case "pagar":{
 				
 				p = Double.parseDouble(JOptionPane.showInputDialog("Você tem que pagar "+ rt + " Reais"));
@@ -136,8 +129,21 @@ public class Pagamentos extends Produtos{
 					
 					JOptionPane.showMessageDialog(null, "Obrigado volte sempre");
 					
-					c = false;
-					
+					 sb = 0.0;
+					 sa = 0.0;
+					 sfj = 0.0;
+					 sfg = 0.0;
+					 sm = 0.0; 
+					 rt = 0.0; 
+					 p = 0.0;
+					 rb=0;
+					 ra=0;
+					 rfj=0;
+					 rfg=0;
+					 rm=0;
+					 c = false;
+					 produtos = "";
+					 
 					break;
 				}
 				
@@ -148,84 +154,105 @@ public class Pagamentos extends Produtos{
 					
 				}else {
 					
-					
 					JOptionPane.showMessageDialog(null, "Obrigado volte sempre");
+					
 					c = false;
+					sb = 0.0;
+					sa = 0.0;
+					sfj = 0.0;
+					sfg = 0.0;
+					sm = 0.0; 
+					rt = 0.0; 
+					p = 0.0;
+					rb=0;
+					ra=0;
+					rfj=0;
+					rfg=0;
+					rm=0;
+					produtos="";
 					
-					
-					break;
 				}
-				
 				
 				break;
 			
 			}
 			
+			default:{
+				JOptionPane.showMessageDialog(null, "Obrigado por compra!");
+				c=false;
+				break;
+			}
+			
 			}
 		
 		//final	
-		}while(c == true);
+		}
 			
 	}
+	
 	//pagamento em cheque
 	public void cheque() {
 		
-		JOptionPane.showMessageDialog(null, "Você ira pagar em cheque\nLembrete: A compra é feita em kilo por alimento");
+		c = true;
+		JOptionPane.showMessageDialog(null, "Você ira pagar em dinheiro\nLembrete: A compra é feita em kilo por alimento");
+		produtos = JOptionPane.showInputDialog("Tipo\n=========\nbatata\narroz\nfeijão\nfrango\nmate\n==========\nDigite 'parar' para voltar\nDigite 'pagar' para pagar os alimentos\n============\nSacola atual\nbatata: "+rb+ "\narroz: "+ra+"\nfeijão: "+rfj+"\nfrango: "+rfg+"\nmate: "+rm+"\n===========\nCustos\nBatata: "+sb+"\nArroz: "+sa+"\nFeijão: "+sfj+"\nFrango: "+sfg+"\nMate: "+sm+"\nValor total: "+ rt);
+		
 		//faça
-		do {
+		while(c == true) {
+			
+			produtos="";
 			rt = sb + sa + sfj + sfg + sm;
 			produtos = JOptionPane.showInputDialog("Tipo\n=========\nbatata\narroz\nfeijão\nfrango\nmate\n==========\nDigite 'parar' para voltar\nDigite 'pagar' para pagar os alimentos\n============\nSacola atual\nbatata: "+rb+ "\narroz: "+ra+"\nfeijão: "+rfj+"\nfrango: "+rfg+"\nmate: "+rm+"\n===========\nCustos\nBatata: "+sb+"\nArroz: "+sa+"\nFeijão: "+sfj+"\nFrango: "+sfg+"\nMate: "+sm+"\nValor total: "+ rt);                                                        
-			
 			
 			switch(produtos) {
 			
 			case "batata":{
 				
-				if(rb > 49) {
+				if(rb < 99) {
 					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
+					rb++;		
+					sb += batata;					
+					pdt.setBatata(rb);
 					
 				}else {
 					
-					rb++;	
-					
-					sb += batata;
-					
-					pdt.setBatata(rb);
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
 					
 				}		
-				
 				
 				break;
 				}
 			
 			case "arroz":{
-					
-				if(ra > 49) {
-					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-					
-				}else {
 				
+				if(ra < 99) {
+					
 					ra++;
 					sa += arroz;
-					pdt.setArroz(ra);	
+					pdt.setArroz(ra);
+					
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
+						
 				}
 				
-				break;			
+				break;		
+				
 				}
 			
 			case "feijão":{
 				
-				if(rfj > 49) {
-					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-							
-				}else {
+				if(rfj < 99) {
 					
 					rfj++;	
 					sfj += feijao;
-					pdt.setFeijao(rfj);
+					pdt.setFeijao(rfj);	
+							
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
+					
 				}
 				
 				break;
@@ -233,15 +260,15 @@ public class Pagamentos extends Produtos{
 			
 			case "frango":{
 				
-				if(rfg > 49) {
-					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-					
-				}else {
+				if(rfg < 99) {
 					
 					rfg++;
 					sfg += frango;
 					pdt.setFrango(rfg);
+						
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
 				}
 				
 				break;
@@ -249,38 +276,22 @@ public class Pagamentos extends Produtos{
 			
 			case "mate":{
 				
-				if(rm > 49) {
-					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-					
-				}else {
+				if(rm < 99) {
 					
 					rm++;
 					sm += mate;
 					pdt.setMate(rm);
-				}
-				
-				break;
-				}
-			
-			case "parar":{
-				
-				if(p == 0) {
-					
-					JOptionPane.showMessageDialog(null, "Você será preso por tentativa de furto pague agora");
-						
 					
 				}else {
 					
-					c = false;
-							
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
+					
 				}
 				
 				break;
 				}
-			
-			
-		case "pagar":{
+					
+			case "pagar":{
 				
 				p = Double.parseDouble(JOptionPane.showInputDialog("Você tem que pagar "+ rt + " Reais"));
 				
@@ -293,8 +304,21 @@ public class Pagamentos extends Produtos{
 					
 					JOptionPane.showMessageDialog(null, "Obrigado volte sempre");
 					
-					c = false;
-					
+					 sb = 0.0;
+					 sa = 0.0;
+					 sfj = 0.0;
+					 sfg = 0.0;
+					 sm = 0.0; 
+					 rt = 0.0; 
+					 p = 0.0;
+					 rb=0;
+					 ra=0;
+					 rfj=0;
+					 rfg=0;
+					 rm=0;
+					 c = false;
+					 produtos = "";
+					 
 					break;
 				}
 				
@@ -305,32 +329,53 @@ public class Pagamentos extends Produtos{
 					
 				}else {
 					
-					
 					JOptionPane.showMessageDialog(null, "Obrigado volte sempre");
+					
 					c = false;
+					sb = 0.0;
+					sa = 0.0;
+					sfj = 0.0;
+					sfg = 0.0;
+					sm = 0.0; 
+					rt = 0.0; 
+					p = 0.0;
+					rb=0;
+					ra=0;
+					rfj=0;
+					rfg=0;
+					rm=0;
+					produtos="";
 					
-					
-					break;
 				}
-				
 				
 				break;
 			
 			}
 			
+			default:{
+				JOptionPane.showMessageDialog(null, "Obrigado por compra!");
+				c=false;
+				break;
+			}
+			
 			}
 		
 		//final	
-		}while(c == true);
+		}
 			
 	}
+	
 	//cartão
 	public void cartao() {	
 		
-		JOptionPane.showMessageDialog(null, "Você ira pagar em cartão\nLembrete: A compra é feita em kilo por alimento");
+		c = true;
+		JOptionPane.showMessageDialog(null, "Você ira pagar em dinheiro\nLembrete: A compra é feita em kilo por alimento");
+		produtos = JOptionPane.showInputDialog("Tipo\n=========\nbatata\narroz\nfeijão\nfrango\nmate\n==========\nDigite 'parar' para voltar\nDigite 'pagar' para pagar os alimentos\n============\nSacola atual\nbatata: "+rb+ "\narroz: "+ra+"\nfeijão: "+rfj+"\nfrango: "+rfg+"\nmate: "+rm+"\n===========\nCustos\nBatata: "+sb+"\nArroz: "+sa+"\nFeijão: "+sfj+"\nFrango: "+sfg+"\nMate: "+sm+"\nValor total: "+ rt);
+		
 		//faça
-		do {
+		while(c == true) {
 			
+			produtos="";
 			rt = sb + sa + sfj + sfg + sm;
 			produtos = JOptionPane.showInputDialog("Tipo\n=========\nbatata\narroz\nfeijão\nfrango\nmate\n==========\nDigite 'parar' para voltar\nDigite 'pagar' para pagar os alimentos\n============\nSacola atual\nbatata: "+rb+ "\narroz: "+ra+"\nfeijão: "+rfj+"\nfrango: "+rfg+"\nmate: "+rm+"\n===========\nCustos\nBatata: "+sb+"\nArroz: "+sa+"\nFeijão: "+sfj+"\nFrango: "+sfg+"\nMate: "+sm+"\nValor total: "+ rt);                                                        
 			
@@ -338,17 +383,15 @@ public class Pagamentos extends Produtos{
 			
 			case "batata":{
 				
-				if(rb > 49) {
+				if(rb < 99) {
 					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
+					rb++;		
+					sb += batata;					
+					pdt.setBatata(rb);
 					
 				}else {
 					
-					rb++;	
-					
-					sb += batata;
-					
-					pdt.setBatata(rb);
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
 					
 				}		
 				
@@ -357,31 +400,36 @@ public class Pagamentos extends Produtos{
 			
 			case "arroz":{
 				
-				if(ra > 49) {
+				if(ra < 99) {
 					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-					
-				}else {
-				
 					ra++;
 					sa += arroz;
-					pdt.setArroz(ra);	
+					pdt.setArroz(ra);
+					
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
+						
 				}
 				
-				break;			
+				break;		
+				
 				}
 			
 			case "feijão":{
 				
-				if(rfj > 49) {
-					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-							
-				}else {
+				if(rfj < 99) {
 					
 					rfj++;	
 					sfj += feijao;
 					pdt.setFeijao(rfj);
+					
+					
+							
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
+					
 				}
 				
 				break;
@@ -389,15 +437,15 @@ public class Pagamentos extends Produtos{
 			
 			case "frango":{
 				
-				if(rfg > 49) {
-					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-					
-				}else {
+				if(rfg < 99) {
 					
 					rfg++;
 					sfg += frango;
-					pdt.setFrango(rfg);
+					pdt.setFrango(rfg);	
+					
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
 				}
 				
 				break;
@@ -405,37 +453,22 @@ public class Pagamentos extends Produtos{
 			
 			case "mate":{
 				
-				if(rm > 49) {
-					
-					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
-					
-				}else {
+				if(rm < 99) {
 					
 					rm++;
 					sm += mate;
 					pdt.setMate(rm);
-				}
-				
-				break;
-				}
-			
-			case "parar":{
-				
-				if(p == 0) {
 					
-					JOptionPane.showMessageDialog(null, "Você será preso por tentativa de furto pague agora");
-						
 				}else {
 					
-					c = false;
+					JOptionPane.showMessageDialog(null, "Produto de estoque acabado");
 					
 				}
 				
 				break;
 				}
-			
-			
-		case "pagar":{
+					
+			case "pagar":{
 				
 				p = Double.parseDouble(JOptionPane.showInputDialog("Você tem que pagar "+ rt + " Reais"));
 				
@@ -448,8 +481,21 @@ public class Pagamentos extends Produtos{
 					
 					JOptionPane.showMessageDialog(null, "Obrigado volte sempre");
 					
-					c = false;
-					
+					 sb = 0.0;
+					 sa = 0.0;
+					 sfj = 0.0;
+					 sfg = 0.0;
+					 sm = 0.0; 
+					 rt = 0.0; 
+					 p = 0.0;
+					 rb=0;
+					 ra=0;
+					 rfj=0;
+					 rfg=0;
+					 rm=0;
+					 c = false;
+					 produtos = "";
+					 
 					break;
 				}
 				
@@ -457,26 +503,46 @@ public class Pagamentos extends Produtos{
 					
 					JOptionPane.showMessageDialog(null, "Você pagou um valor a baixo do preço dos alimentos");
 					
-					
 				}else {
 					
-					
 					JOptionPane.showMessageDialog(null, "Obrigado volte sempre");
+					
 					c = false;
+					sb = 0.0;
+					sa = 0.0;
+					sfj = 0.0;
+					sfg = 0.0;
+					sm = 0.0; 
+					rt = 0.0; 
+					p = 0.0;
+					rb=0;
+					ra=0;
+					rfj=0;
+					rfg=0;
+					rm=0;
+					produtos="";
 					
-					
-					break;
 				}
-				
 				
 				break;
 			
 			}
 			
-			}	
+			default:{
+				
+				JOptionPane.showMessageDialog(null, "Obrigado por compra!");
+				c=false;
+				break;
+			
+			}
+			
+			}
+		
 		//final	
-		}while(c == true);
+		}
 		
 	}
-	
 }
+
+	
+

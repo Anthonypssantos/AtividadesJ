@@ -17,9 +17,7 @@ public class Produtos extends Estoque{
 		est.setFeijao(feijao);
 		est.setFrango(frango);
 		est.setMate(mate);
-		
-		
-		
+	
 	}
 	
 	public int getBatata() {
