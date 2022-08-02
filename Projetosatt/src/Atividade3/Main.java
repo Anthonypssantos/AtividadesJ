@@ -15,7 +15,7 @@ public class Main {
 		
 			do {
 				
-				casos = Integer.parseInt(JOptionPane.showInputDialog("1 para prova\n2 para sair"));
+				casos = Integer.parseInt(JOptionPane.showInputDialog("1 para prova\n2 para ver o gabarito\n3 para sair"));
 			
 				switch(casos) {
 				
@@ -26,8 +26,20 @@ public class Main {
 					
 					p.respostaAluno();
 					
+					if(h == 5) {
+						
+						h = 0;
+						
+					}
+					
 					break;
 					}
+				
+				case 2:{
+					
+					p.gabarito();
+					
+				}
 				
 				default:{
 					
