@@ -18,10 +18,13 @@ public class Provareturna {
 	
 	public void print() {
 		
-		for(int i = 0; i < notas.size(); i++) {
+		for(int i = 1; i < notas.size(); i++) {
 			
-			compara = notas.get(i);
+			compara = notas.get(i-1);
 			nom = nomes.get(i);
+			
+			nomes2.add(nom);
+			notas2.add(compara);
 			
 			if(compara > notas.get(i)) {
 				
@@ -37,6 +40,7 @@ public class Provareturna {
 			}
 			
 		}
+		//final for
 			
 	}
 	
@@ -44,15 +48,11 @@ public class Provareturna {
 		return nome;
 	}
 
-
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	
-	nomes.add(nome);
+	nomes.add(this.nome);
 	}
-
-
 
 	public double getNota() {
 				

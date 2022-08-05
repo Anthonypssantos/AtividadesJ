@@ -1,5 +1,6 @@
 package Aividade4;
 
+import java.lang.Math;
 import javax.swing.JOptionPane;
 
 public class prova extends Provareturna{
@@ -7,306 +8,158 @@ public class prova extends Provareturna{
 	Provareturna pvrta = new Provareturna();
 	Gabarito gab = new Gabarito();
 	
-	String questao=" ", nome=" ";
-	double nota=0.0, l=0.0;
-	int casos=0, f=0, alunos=0;
+	String[] perguntas = {"Paulo é grande?Sim ou não","Cristopher trabalha na mix?Sim ou não","Arthur gosta de bergamota?Sim ou não","Victor tem bigode?Sim ou não","Anthony usa linux?Sim ou não","Mariano usa um notbook da 'DELL'?Sim ou não","Mariano da aula na sala 305?Sim ou não"," Luiz tem um impressora 3d?Sim ou não ","Anthony gosta de monster?Sim ou não","Você está no senac agora?Sim ou não"," Você é um ser humano?Sim ou não ","Mariano tem garrafa de agua?Sim ou não ","O cristopher desliga a tv da sala com o celular?Sim ou não","Anthony gosta de linux?Sim ou não","O nascional fica a direita da saida da frente do senac?Sim ou não"}; 
 	
-	private int h=0;
+	String recebe=" ", nome=" ", entrar=" ", questao=" ";
 	
+	int rtotal=0, ctotal=0;
 	
-	public int getH() {
-		return h;
+	int r=0, f=0;
 	
+	boolean v = true;
+	
+	double nota=0.0;
+    
+	int max = 15;
+    int min = 1;
+    int range = max - min + 1;
+    
+	public int aluno(int total) {
+		int f=0;
+		
+		for(int i =0; i < total; i++) {
+			
+		nome = JOptionPane.showInputDialog("Colopque o nome do aluno");
+		pvrta.setNome(nome);
+		
+		}
+		rtotal = total;
+		
+		return f;
 	}
-
-	public void setH(int h) {
-		this.h = h;
+	
+	public void addnota() {
+		double notas=0.0;
+		int h=0;
+		
+		do {
+			
+			entrar = JOptionPane.showInputDialog("Para inicar a prova digite 'prova'\nPara sair digite 'sair'");
+			
+			switch(entrar) {
+			
+			case "prova":{
+				int rand=0;
+				ctotal++;
+				
+				if(ctotal > rtotal) {
+					
+					JOptionPane.showMessageDialog(null, "Numero maximo de alunos");
+					v = false;
+					
+				}
+				
+				 for (int i = 0; i < 15; i++) {
+					 
+				        rand = (int)(Math.random() * range) + min;	        
+				        
+				 }
+				
+				for(int i = 0; i < 15; i++) {
+					r++;
+					
+					if(r < 10) {
+						
+						questao = JOptionPane.showInputDialog(perguntas[i]);
+						
+						if(questao.equals("Sim")) {
+							f++;
+							nota += 0.5;
+							pvrta.setNota(nota);
+						}
+						if(questao.equals("sim")) {
+							f++;
+							nota += 0.5;
+							pvrta.setNota(nota);
+							
+						}else {
+							
+							nota += 0.0;
+							
+						}
+						
+					}
+					if(r >= 10) {
+						
+						questao = JOptionPane.showInputDialog(perguntas[i]);
+						
+						if(questao.equals("Sim")) {
+							f++;
+							nota += 1.0;
+							pvrta.setNota(nota);
+						}
+						if(questao.equals("sim")) {
+							f++;
+							nota += 1.0;
+							pvrta.setNota(nota);
+						}else {
+							
+							nota += 0.0;
+							
+						}
+						if(ctotal == rtotal ) {
+							
+							acertos(f);
+							
+						}
+						
+					}
+						
+					if(questao.equals("sair")) {
+						pvrta.setNota(nota);
+						v = false;
+						
+					}
+					
+				}
+				
+				break;
+			}
+					
+			default:{
+				
+				v = false;
+				break;
+			}	
+			
+			}
+		
+		}while(v == true);
+		
 	}
-
-	public void gabarito() {		
+	
+	public void acertos(int f) {
+		int a=0, lkj=0;
+		
+		a = f;
+		
+		JOptionPane.showMessageDialog(null, "Acertos da turma: "+a);
+		
+		nota(lkj);
+		
+	}
+	
+	public void nota(int not) {
+		
+		pvrta.print();
+		
+		
+	}
+	
+	public void gabarito() {
 		
 		gab.gabarit();
-	
-	}
-	
-	public void respostaAluno(){
-			
-			if(h == 1) {
-				
-				nome = JOptionPane.showInputDialog("Coloque seu nome");
-				questao = JOptionPane.showInputDialog("Quem usa linux: \nA: Anthony\nB: Cristopher\nC: Paulo");
-				
-				if(questao.equals("A")) {
-					f++;
-					l = 0.5;
-					
-				}else {
-					
-					nota += 0.0;
-					
-				}
-				
-			}
-			//Se h igual a 2 entra na primeira Segunda 
-			else if(h == 2) {
-				
-				questao = JOptionPane.showInputDialog("Quem está a esquerda de Anthony\nA: Luiz\nB: Paulo\nC: Cristopher");
-				
-				if(questao.equals("A")) {
-					f++;
-					l += 0.5;
-					
-				}else {
-					
-					nota += 0.0;
-					
-				}
-				
-				
-			}
-			
-			else if(h == 3) {
-					
-					questao = JOptionPane.showInputDialog("Quem é o professor da sala 305\nA: Mariano\nB: Luiz\nC: Mendigo");
-					
-					if(questao.equals("A")) {
-						f++;
-						l += 0.5;
-						
-					}else {
-						
-						nota += 0.0;
-						
-					}
-					
-				}
-				
-		else if(h == 4) {
-			
-			questao = JOptionPane.showInputDialog("Quem está trabalhando na mix da sala do mariano\nA: Victor\nB: arthur\nC: Cristopher");
-			
-			if(questao.equals("C")) {
-				f++;
-				l += 0.5;
-				
-			}else {
-				
-				nota += 0.0;
-				
-			}
-			
-		}
 		
-			
-			
-		else if(h == 5) {
-			
-			questao = JOptionPane.showInputDialog("Quem sempre tem uma bergamota na sala\nA: Arthur\nB: Anthony\nC: Anthony");
-		
-			if(questao.equals("A")) {
-				f++;
-				l += 0.5;
-				acertos();
-			}else {
-				
-				nota += 0.0;
-				acertos();
-			}
-			
-			
-			}
-				
-	/*	else if(h == 6) {
-			
-			questao = JOptionPane.showInputDialog("Quando é 4+4\nA: 5\nB: 7\nC: 8");
-		
-			if(questao.equals("C")) {
-				f++;
-				l += 0.5;
-				
-			}else {
-				
-				nota += 0.0;
-				
-			}
-				
-		}
-				
-		else if(h == 7) {
-			
-			questao = JOptionPane.showInputDialog("Quem usa impresora 3d\nA: Luiz\nB: Arthur\nC: Mariano");
-			
-			if(questao.equals("A")) {
-				f++;
-				l += 0.5;
-				
-			}else {
-				
-				nota += 0.0;
-				
-			}
-			
-			
-		}
-				
-		else if(h == 8) {
-			
-			questao = JOptionPane.showInputDialog("Quem é o mais alto da sala\nA: Anthony\nB: Paulo\nC: Victor");
-			
-			if(questao.equals("B")) {
-				f++;
-				l += 0.5;
-				
-			}else {
-				
-				nota += 0.0;
-				
-			}
-			
-			
-		}
-				
-		else if(h == 9) {
-			
-			questao = JOptionPane.showInputDialog("Quanto é 5+5\nA: 5\nB: 1\nC: 10");
-			//Se questão igual a "A" tipo String Variavel l recebe 0.5
-			if(questao.equals("C")) {
-				f++;
-				l += 0.5;
-				
-			}else {
-				
-				nota += 0.0;
-				
-			}
-				
-		}
-			
-			else if(h == 10) {
-					
-					questao = JOptionPane.showInputDialog("Quanto é 6+6\nA: 5\nB: 1\nC: 12");
-					//Se questão igual a "A" tipo String Variavel l recebe 0.5
-					if(questao.equals("C")) {
-						f++;
-						l += 1.0;
-						
-					}else {
-						
-						nota += 0.0;
-						
-					}
-						
-				}
-					
-			else if(h == 11) {
-				
-				questao = JOptionPane.showInputDialog("Quanto é 7+7\nA: 5\nB: 1\nC: 14");
-				//Se questão igual a "A" tipo String Variavel l recebe 0.5
-				if(questao.equals("C")) {
-					f++;
-					l += 1.0;
-					
-				}else {
-					
-					nota += 0.0;
-					
-				}
-					
-			}
-					
-			else if(h == 12) {
-				
-				questao = JOptionPane.showInputDialog("Quanto é 8+8\nA: 5\nB: 1\nC: 16");
-				//Se questão igual a "A" tipo String Variavel l recebe 0.5
-				if(questao.equals("C")) {
-					f++;
-					l += 1.0;
-					
-				}else {
-					
-					nota += 0.0;
-					
-				}
-					
-			}
-			else if(h == 13) {
-				
-				questao = JOptionPane.showInputDialog("Quanto é 9+9\nA: 5\nB: 1\nC: 18");
-				//Se questão igual a "A" tipo String Variavel l recebe 0.5
-				if(questao.equals("C")) {
-					f++;
-					l += 1.0;
-					
-				}else {
-					
-					nota += 0.0;
-					
-				}
-					
-			}
-					
-			else if(h == 14) {
-				
-				questao = JOptionPane.showInputDialog("Quanto é 10+10\nA: 5\nB: 1\nC: 20");
-				//Se questão igual a "A" tipo String Variavel l recebe 0.5
-				if(questao.equals("C")) {
-					f++;
-					l += 1.0;
-					
-				}else {
-					
-					nota += 0.0;
-					
-				}
-					
-			}
-			
-			else if(h == 15) {
-				
-				questao = JOptionPane.showInputDialog("Quanto é 15+15\nA: 5\nB: 1\nC: 30");
-				//Se questão igual a "A" tipo String Variavel l recebe 0.5
-				if(questao.equals("C")) {
-					f++;
-					l += 1.0;
-					acertos();
-				}else {
-					
-					nota += 0.0;
-					acertos();
-					
-				}
-					
-			} */
-		
-		//final metodo resposta Aluno
-		
-	}	
-		
-	
-	public void acertos() {
-		
-		JOptionPane.showMessageDialog(null,"Seus acertos: "+ f);
-		
-		nota();
-		
-	}
-	
-	public void nota() {
-		
-		JOptionPane.showMessageDialog(null,"Sua nota: "+ l);
-		
-		pvrta.setNome(nome);
-		pvrta.setNota(l);
-		
-		maior();
-		
-	}
-	
-	public void maior() {
-	
-		pvrta.print();
-		f = 0;
-		l = 0.0;
-	}
+	}		
 	
 }
