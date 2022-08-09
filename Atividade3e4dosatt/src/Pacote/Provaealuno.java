@@ -9,7 +9,7 @@ public class Provaealuno {
 	private double nota=0.0;
 	private String nom=" ";
 	private int alunos=0;
-	
+	double recebe=0.0;	
 	
 	ArrayList<String> nomes2 = new ArrayList<>();
 	ArrayList<Double> notas2 = new ArrayList<>(); 
@@ -22,13 +22,20 @@ public class Provaealuno {
 	ArrayList<Double> notas = new ArrayList<>(); 
 	
 	public void print() {
+			
+	for(int i=0; i < notas.size(); i++) {
 		
-		for(int i = 0;i < notas.size(); i++) {
+			recebe = notas.get(i);
+			nom = nomes.get(i);
 			
-			JOptionPane.showMessageDialog(null, "Nome: "+nomes.get(i)+"Maior nota: "+notas.get(i));
-			
+			if(recebe == notas.get(i)) {
+				
+				JOptionPane.showMessageDialog(null, "Nome: "+nomes.get(i++)+"Maior nota: "+notas.get(i));
+				
+			}
+		
 		}
-	
+				
 	}
 	
 	public int getAlunos() {
@@ -55,32 +62,13 @@ public class Provaealuno {
 	}
 
 	public void setNota(double nota) {
-		this.nota += nota;
-		
-		double recebe=0.0;		
+		this.nota += nota;	
 		
 		notas.add(nota);
 		
 		Collections.sort(notas);
 		
-		for(int i = 0; i < notas.size(); i++) {
-			
-			recebe = notas.get(i);
-			nom = nomes.get(i);
-			
-			if(recebe == notas.get(i)) {
-				
-				iguais.add(recebe);
-				nomescomp.add(nom);
-				
-			}else {
-				
-				notas2.add(nota);
-				nomes2.add(nom);
-				
-			}
-			
-		}
+		
 		
 	}	
 	

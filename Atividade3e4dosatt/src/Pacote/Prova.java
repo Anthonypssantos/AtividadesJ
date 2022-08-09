@@ -23,7 +23,7 @@ public class Prova {
 			Random aleatorio = new Random();
 			
 			//strings
-			String nome=" ", entrar=" ";
+			String nome=" ", entrar=" ", b=" ";
 			
 			//variaveis de incremento
 			int r=0, f=0, n=0, recb=0, q=0, rand=0;
@@ -57,15 +57,15 @@ public class Prova {
 			
 			}
 			
-			public void addnota(int alunos) {
-				String questao=" ", certos=" ";
+			public String addnota(int alunos) {
+				String questao=" ", certos=" ", vai=" ";
 				
 				do {
 					
 					if(alunos == 0) {
 						
 						JOptionPane.showMessageDialog(null, "Coloque alunos para conseguir proceguir");
-						return;
+						
 						
 					}else {
 						
@@ -104,12 +104,12 @@ public class Prova {
 								f++;
 									if(n >= 10) {
 										
-										nota += 1.0;
+										nota ++;
 										
 										
 									}else {
 										
-										nota += 1.0;
+										nota ++;
 										
 									}
 								
@@ -121,21 +121,23 @@ public class Prova {
 					
 							}
 							
-						if(n == 4) {
+						if(n == 2) {
 							n = 0;
 							q++;
 								
+								JOptionPane.showMessageDialog(null, "Total de respostas preenchidas "+f+" Prova aluno"+ q);
 								pv.setNota(nota);
 								
 							nota = 0.0;
-							JOptionPane.showMessageDialog(null, "Prova aluno"+ q);
+							
 							
 							if(q == alunos) {
 								
 								JOptionPane.showMessageDialog(null, "O limite de provas feitas pelos alunos chegou ao fim");
+								
 								pv.print();
 								
-								acertos(f);
+								vai = gaba(f);
 							}
 
 						}
@@ -155,29 +157,15 @@ public class Prova {
 					}
 				//final da estrutura de repetição
 				}while(v == true);
-			
+			return vai;
 			}
 			
-			public void acertos(int f) {
+			public String gaba(int f) {
+				String vai=" ";
 				
-				JOptionPane.showMessageDialog(null, "Acertos da turma: "+f);
+			vai = gab.gabarito(f);
 				
-				nota(f);
-				
-			}
-			
-			public void nota(int f) {
-				
-				pv.print();
-				
-				gaba(f);
-			
-			}
-			
-			public void gaba(int f) {
-				
-				gab.gabarito(f);
-				
+				return vai;
 			}	
 
 }
